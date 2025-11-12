@@ -1,0 +1,20 @@
+{
+  "analyzer": {
+    "inputFile": "IN/document.xml",
+    "outputFile": "OUT/unique_names.json",
+    "originalPrefix": "автомобильПострадавшего.",
+    "cleanLogicalConstructions": true,
+    "sortByLength": true
+  },
+  "generator": {
+    "inputFile": "OUT/unique_names.json",
+    "outputFile": "OUT/replacement_map.json",
+    "newPrefix": "арендованноеТс.",
+    "encoding": "utf8"
+  },
+  "replacer": {
+    "inputFile": "IN/document.xml",
+    "outputFile": "OUT/document.xml",
+    "replacementMapFile": "OUT/replacement_map.json"
+  }
+}
