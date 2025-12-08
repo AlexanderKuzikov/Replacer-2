@@ -143,7 +143,8 @@ node analyzer.js
 
 ## Разработчик
 
-Alexander Kuzikov
+Alexander Kuzikov 
+alexander@kuzikov.com
 
 ## Лицензия
 
@@ -160,6 +161,7 @@ Apache-2.0 License
 ## Поддержка
 
 При возникновении проблем создавайте issue в репозитории проекта.
+Для срочных вопросов: +79226440909
 
 ---
 
