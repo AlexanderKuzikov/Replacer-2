@@ -34,8 +34,7 @@ if not exist "OUT" mkdir OUT
 REM Проверка зависимостей
 if not exist "node_modules" (
     echo 📦 Установка зависимостей...
-    call npm install
-    echo.
+    npm install    echo.
 )
 
 echo 🌐 Открытие браузера: http://localhost:3000
@@ -47,4 +46,4 @@ start /B timeout /t 2 /nobreak >nul && start http://localhost:3000
 REM Запуск сервера
 echo 🚀 Запуск сервера...
 echo.
-call npm start
+npm start
