@@ -34,14 +34,12 @@ function extractFields(xmlContent) {
     // Remove если(...) wrapper  
     field = field.replace(/если\((.+)\)/gi, '$1');
     
-        // Remove parentheses and everything after
-    const parenIndex = field.indexOf('(');
-    if (parenIndex > 0) {
-      field = field.substring(0, parenIndex);
+    // Extract field from function wrappers: форматДаты(поле) -> поле
+    // Match patterns like: функция(содержимое) or функция((содержимое
+    if (funcMatch) {      field = funcMatch[1]; // Extract content from parentheses
     }
-    field = field.trim();
-    if (field) {
-      fields.add(field);
+         field = field.trim();
+    if (field) { fields.add(field);
     }
   }
   
