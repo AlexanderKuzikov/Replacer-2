@@ -34,11 +34,17 @@ function extractFields(xmlContent) {
     // Remove если(...) wrapper  
     field = field.replace(/если\((.+)\)/gi, '$1');
     
-    // Extract field from function wrappers: форматДаты(поле) -> поле
-    // Match patterns like: функция(содержимое) or функция((содержимое
-    if (funcMatch) {      field = funcMatch[1]; // Extract content from parentheses
-    }
-         field = field.trim();
+    // Extract content from parentheses: функция(содержимое) -> содержимое
+    const lastParen = field.lastIndexOf('(');
+    if (lastParen > 0) {
+      const closeParen = field.lastIndexOf(')');
+      if (closeParen > lastParen) {
+        field = field.substring(lastParen + 1, closeParen);
+      } else {
+        // No closing paren, take everything after opening
+        field = field.substring(lastParen + 1);
+          }
+    field = field.trim();}
     if (field) { fields.add(field);
     }
   }
