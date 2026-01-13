@@ -77,22 +77,35 @@ app.post('/api/upload-and-analyze', upload.single('file'), async (req, res) => {
       const zip = new AdmZip(filePath);
       const zipEntries = zip.getEntries();
       
-      // Find document.xml (in word/document.xml for .docx)
-      let xmlEntry = zipEntries.find(entry => 
-        entry.entryName === 'word/document.xml' || 
-        entry.entryName === 'document.xml'
-      );
+      // Check if this is a .fdt file (contains template.docx)
+      const isFdt = zipEntries.some(entry => entry.entryName === 'template.docx');
       
-      if (!xmlEntry) {
+      let xmlEntry = null;
+      
+      if (isFdt) {
+        // For .fdt: extract template.docx and then get word/document.xml from it
+        const templateEntry = zipEntries.find(entry => entry.entryName === 'template.docx');
+        if (templateEntry) {
+          const templateZip = new AdmZip(templateEntry.getData());
+          xmlEntry = templateZip.getEntries().find(entry => entry.entryName === 'word/document.xml');
+          if (xmlEntry) {
+            documentXml = xmlEntry.getData().toString('utf8');
+          }
+        }
+      } else {
+        // For .docx: directly get word/document.xml
+        xmlEntry = zipEntries.find(entry => entry.entryName === 'word/document.xml');
+        if (xmlEntry) {
+          documentXml = xmlEntry.getData().toString('utf8');
+        }
+      }
+      
+      if (!documentXml) {
         return res.status(400).json({
           success: false,
           message: '❌ document.xml не найден в архиве'
         });
-      }
-      
-      documentXml = xmlEntry.getData().toString('utf8');
-      
-    } finally {
+      }    } finally {
       // Clean up uploaded file
       await fs.unlink(filePath).catch(() => {});
     }
