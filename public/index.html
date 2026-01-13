@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replacer-2: Генератор конфигурации</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔄 Replacer-2</h1>
+            <p class="subtitle">Генератор конфигурации для замены префиксов</p>
+        </header>
+
+        <main>
+            <!-- Секция загрузки файла -->
+            <section class="section">
+                <h2>📁 Файл шаблона</h2>
+                <div class="file-upload">
+                    <input type="file" id="fileInput" accept=".fdt,.docx" style="display: none">
+                    <button id="selectFileBtn" class="btn btn-secondary">Выбрать .fdt или .docx файл</button>
+                    <p id="fileName" class="file-name">Файл не выбран</p>
+                </div>
+            </section>
+
+            <!-- Секция настройки замены -->
+            <section class="section">
+                <h2>⚙️ Настройка замены</h2>
+                <div class="form-group">
+                    <label for="oldPrefix">Старый префикс:</label>
+                    <div class="input-with-suffix">
+                        <input type="text" id="oldPrefix" placeholder="автомобильПострадавшего">
+                        <span class="suffix">.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPrefix">Новый префикс:</label>
+                    <div class="input-with-suffix">
+                        <input type="text" id="newPrefix" placeholder="арендованноеТс">
+                        <span class="suffix">.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Кнопка выполнения -->
+            <button id="executeBtn" class="btn btn-primary">🚀 ВЫПОЛНИТЬ</button>
+
+            <!-- Результат -->
+            <div id="result" class="result" style="display: none;">
+                <!-- Заполняется динамически через JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Уведомления -->
+    <div id="notification" class="notification hidden">
+        <span id="notificationText"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
