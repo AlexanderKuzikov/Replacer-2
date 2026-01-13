@@ -9,7 +9,7 @@
   "generator": {
     "inputFile": "OUT/unique_names.json",
     "outputFile": "OUT/replacement_map.json",
-    "newPrefix": "истец.",
+    "newPrefix": "цедент.",
     "encoding": "utf8"
   },
   "replacer": {
