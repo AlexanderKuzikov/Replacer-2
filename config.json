@@ -2,14 +2,14 @@
   "analyzer": {
     "inputFile": "IN/document.xml",
     "outputFile": "OUT/unique_names.json",
-    "originalPrefix": "автомобильПострадавшего.",
+    "originalPrefix": "представитель.",
     "cleanLogicalConstructions": true,
     "sortByLength": true
   },
   "generator": {
     "inputFile": "OUT/unique_names.json",
     "outputFile": "OUT/replacement_map.json",
-    "newPrefix": "арендованноеТс.",
+    "newPrefix": "истец.",
     "encoding": "utf8"
   },
   "replacer": {
