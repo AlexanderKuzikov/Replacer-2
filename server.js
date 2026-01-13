@@ -34,6 +34,11 @@ function extractFields(xmlContent) {
     // Remove если(...) wrapper  
     field = field.replace(/если\((.+)\)/gi, '$1');
     
+        // Remove parentheses and everything after
+    const parenIndex = field.indexOf('(');
+    if (parenIndex > 0) {
+      field = field.substring(0, parenIndex);
+    }
     field = field.trim();
     if (field) {
       fields.add(field);
