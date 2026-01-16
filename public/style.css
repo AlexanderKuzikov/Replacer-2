@@ -1,3 +1,4 @@
+/* Final Refined Style (Clean Architecture) */
 * {
     margin: 0;
     padding: 0;
@@ -6,180 +7,208 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #f0f2f5;
+    color: #333;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .container {
     background: white;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    max-width: 550px;
     width: 100%;
-    padding: 40px;
+    padding: 30px;
+    border: 1px solid #dedede;
 }
 
 header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 }
 
 header h1 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 8px;
+    font-size: 24px;
+    color: #1a202c;
+    margin-bottom: 6px;
+    font-weight: 700;
 }
 
 .subtitle {
-    color: #666;
-    font-size: 16px;
+    color: #718096;
+    font-size: 14px;
 }
 
+/* --- Стили секций --- */
 .section {
-    margin-bottom: 24px;
-    padding: 24px;
-    background: #f8f9fa;
-    border-radius: 12px;
+    /* Увеличили отступ между большими блоками */
+    margin-bottom: 32px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-bottom: 20px; /* Отступ снизу внутри карточки */
 }
 
 .section h2 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 16px;
+    background: #edf2f7;
+    color: #2d3748;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    margin: 0 0 20px 0; /* Отступ от заголовка до контента */
+    border-bottom: 1px solid #e2e8f0;
 }
+
+/* 
+   Умный селектор: применяет боковые отступы ко всем прямым потомкам секции,
+   кроме заголовка h2. Это заменяет !important и padding у родителей.
+*/
+.section > *:not(h2) {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* --- Элементы форм --- */
 
 .file-upload {
     text-align: center;
 }
 
 .file-name {
-    margin-top: 12px;
-    color: #666;
-    font-size: 14px;
+    margin-top: 10px;
+    color: #4a5568;
+    font-size: 13px;
+    font-family: monospace;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    /* Уменьшили расстояние между полями ввода (было 20px) */
+    margin-bottom: 12px; 
+}
+
+/* Последнему элементу убираем отступ, чтобы не было дырки внизу */
+.form-group:last-child {
+    margin-bottom: 0;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
-    color: #333;
+    margin-bottom: 6px;
+    color: #4a5568;
     font-weight: 500;
+    font-size: 13px;
 }
 
 .input-with-suffix {
     display: flex;
     align-items: center;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 12px 16px;
     background: white;
-    transition: border-color 0.3s;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.2s;
 }
 
 .input-with-suffix:focus-within {
-    border-color: #667eea;
+    border-color: #5a67d8;
+    box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.1);
 }
 
 .input-with-suffix input {
     flex: 1;
     border: none;
     outline: none;
-    font-size: 16px;
-    color: #333;
+    font-size: 14px;
+    color: #2d3748;
 }
 
 .input-with-suffix .suffix {
-    color: #667eea;
-    font-weight: bold;
-    font-size: 18px;
-    margin-left: 4px;
+    color: #a0aec0;
+    font-weight: normal;
 }
+
+/* --- Кнопки --- */
 
 .btn {
     border: none;
-    padding: 14px 32px;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
+/* Основная кнопка "Выполнить" */
 .btn-primary {
-    background: #667eea;
+    background: #5a67d8;
     color: white;
-    width: 100%;
-    margin-top: 16px;
+    /* Делаем кнопку не на всю ширину */
+    width: auto;
+    min-width: 200px; /* Минимальная ширина для красоты */
+    display: block;   /* Чтобы работал margin auto */
+    margin: 0 auto;   /* Центрируем */
+    height: 44px;
+    box-shadow: 0 2px 5px rgba(90, 103, 216, 0.2);
 }
 
 .btn-primary:hover {
-    background: #5568d3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.btn-primary:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
+    background: #434190;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(90, 103, 216, 0.3);
 }
 
 .btn-secondary {
-    background: #f8f9fa;
-    color: #333;
-    border: 2px solid #ddd;
+    background: #fff;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+    width: 100%;
 }
 
 .btn-secondary:hover {
-    background: #e9ecef;
-    border-color: #adb5bd;
+    background: #f7fafc;
+    border-color: #a0aec0;
 }
 
+/* --- Результат и уведомления --- */
 .result {
-    margin-top: 24px;
-    padding: 24px;
-    background: #d4edda;
-    border: 2px solid #c3e6cb;
-    border-radius: 12px;
+    margin-top: 30px; /* Чуть больше отступ от кнопки */
+    padding: 15px;
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+    color: #22543d;
+    border-radius: 4px;
     text-align: center;
+    font-size: 14px;
+}
+
+/* Информационный блок о полях (зеленый) */
+/* Мы используем ID, чтобы перебить встроенные стили аккуратно */
+#fieldsInfo {
+    border-radius: 4px !important; /* Здесь оставил только для radius, если он задан инлайново в JS */
+    /* Отступы управляются общим правилом .section > * */
 }
 
 .notification {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 16px 24px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
     z-index: 1000;
-    transition: all 0.3s ease;
-    max-width: 400px;
+    background: white;
+    border-left: 4px solid #48bb78;
+    color: #2d3748;
+    transition: opacity 0.3s, transform 0.3s;
 }
 
-.notification.success {
-    background: #4caf50;
-    color: white;
-}
-
-.notification.error {
-    background: #f44336;
-    color: white;
-}
-
-.notification.warning {
-    background: #ff9800;
-    color: white;
-}
-
-.notification.hidden {
-    opacity: 0;
-    transform: translateX(400px);
-}
+.notification.error { border-left-color: #f56565; }
+.notification.hidden { opacity: 0; transform: translateX(20px); pointer-events: none; }
